@@ -1,0 +1,464 @@
+/* ReadFlow 应用外壳与页面通用样式 */
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ---------- 顶部导航 ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+}
+
+.site-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: var(--space-3) var(--space-5);
+}
+
+.brand {
+  color: var(--color-text);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.brand:hover {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.nav__link {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  font-size: 15px;
+}
+
+.nav__link:hover {
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.nav__link--active {
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* ---------- 页面主体 ---------- */
+
+.site-main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5) var(--space-7);
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.page__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.page__title {
+  font-size: 28px;
+  letter-spacing: -0.01em;
+}
+
+.page__desc {
+  max-width: 60ch;
+  color: var(--color-text-muted);
+}
+
+.page__note {
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.page__actions {
+  margin: 0;
+}
+
+/* ---------- 统计卡片 ---------- */
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.stat-card {
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+}
+
+.stat-card__label {
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.stat-card__value {
+  margin-top: var(--space-2);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+/* ---------- 通用面板 ---------- */
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+}
+
+.panel--empty {
+  align-items: center;
+  padding: var(--space-7) var(--space-5);
+  border-style: dashed;
+  text-align: center;
+}
+
+.panel__title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.panel__hint {
+  color: var(--color-text-muted);
+  font-size: 15px;
+}
+
+/* ---------- 状态标签（静态展示） ---------- */
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip {
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 999px;
+  background-color: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.chip--current {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* ---------- 搜索栏（当前禁用） ---------- */
+
+.search-bar {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.search-bar__input {
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+.search-bar__input:disabled {
+  background-color: #f1efeb;
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+/* ---------- 按钮 ---------- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-5);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background-color: var(--color-accent);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--color-accent-hover);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.button:disabled {
+  background-color: var(--color-border-strong);
+  color: var(--color-surface);
+  cursor: not-allowed;
+}
+
+.button--ghost {
+  border-color: var(--color-border-strong);
+  background-color: var(--color-surface);
+  color: var(--color-accent);
+}
+
+.button--ghost:hover {
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+/* ---------- 响应式 ---------- */
+
+@media (max-width: 720px) {
+  .site-header__inner {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .site-main {
+    padding: var(--space-5) var(--space-4) var(--space-6);
+  }
+
+  .stat-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .search-bar {
+    flex-direction: column;
+  }
+}
+
+/* ================= 第二阶段：图书列表 ================= */
+
+.book-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.book-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+}
+
+.book-item__info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.book-item__title {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.book-item__meta {
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.book-item__action {
+  flex-shrink: 0;
+}
+
+/* 列表里的按钮比页面主按钮小一号 */
+.book-item__action .button {
+  padding: var(--space-2) var(--space-4);
+  font-size: 14px;
+}
+
+/* ---------- 封面（含无封面时的 CSS 占位） ---------- */
+
+.cover {
+  flex-shrink: 0;
+  width: 56px;
+  height: 80px;
+  border-radius: var(--radius-sm);
+  background-color: #ece9e3;
+  object-fit: cover;
+}
+
+.cover--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* ---------- 阅读状态标签 ---------- */
+
+.status {
+  display: inline-flex;
+  padding: var(--space-1) var(--space-3);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status--want-to-read {
+  background-color: #eef0f4;
+  color: #4a5568;
+}
+
+.status--reading {
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+.status--finished {
+  background-color: #efe9e1;
+  color: #7a6a52;
+}
+
+/* ---------- 操作反馈与错误提示 ---------- */
+
+.feedback {
+  font-size: 14px;
+}
+
+.feedback--ok {
+  color: var(--color-accent);
+}
+
+.feedback--warn {
+  color: #8a5a2b;
+}
+
+.panel--error {
+  border-color: #e6c8bf;
+  background-color: #fdf5f2;
+}
+
+.storage-warning {
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: var(--space-2) var(--space-5);
+  border-bottom: 1px solid #f0ddc4;
+  background-color: #fdf3e5;
+  color: #8a5a2b;
+  font-size: 14px;
+}
+
+@media (max-width: 720px) {
+  .book-item {
+    flex-wrap: wrap;
+  }
+
+  .book-item__info {
+    flex-basis: calc(100% - 72px);
+  }
+
+  .book-item__action {
+    margin-left: auto;
+  }
+}
+
+/* ================= 手动添加书籍表单 ================= */
+
+.page__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* 表单打开时，切换按钮保持高亮 */
+.button--active {
+  background-color: var(--color-accent-hover);
+}
+
+.manual-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+}
+
+.manual-form__title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.manual-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.field__label {
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.field__input {
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+.field__input:focus {
+  border-color: var(--color-accent);
+  outline: 2px solid var(--color-accent-soft);
+}
