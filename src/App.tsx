@@ -10,18 +10,38 @@ import './App.css'
 export default function App() {
   // 书架数据只在 App 里取一次，再传给需要的页面，
   // 所以搜索页和书架页看到的永远是同一份数据，不需要额外同步。
-  const { books, addBook, storageError } = useBooks()
+  const { books, addBook, updateStatus, updateProgress, updateNote, removeBook, storageError } =
+    useBooks()
 
   return (
     <Routes>
       <Route element={<AppLayout storageError={storageError} />}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/shelf" element={<ShelfPage books={books} addBook={addBook} />} />
+        <Route path="/" element={<HomePage books={books} />} />
+        <Route
+          path="/shelf"
+          element={
+            <ShelfPage
+              books={books}
+              addBook={addBook}
+              updateStatus={updateStatus}
+              removeBook={removeBook}
+            />
+          }
+        />
         <Route
           path="/search"
           element={<SearchPage books={books} addBook={addBook} />}
         />
-        <Route path="/books/:id" element={<BookDetailPage />} />
+        <Route
+          path="/books/:id"
+          element={
+            <BookDetailPage
+              books={books}
+              updateProgress={updateProgress}
+              updateNote={updateNote}
+            />
+          }
+        />
       </Route>
     </Routes>
   )

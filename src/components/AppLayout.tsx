@@ -15,9 +15,8 @@ const NAV_ITEMS: NavItem[] = [
   { to: '/', label: '首页', end: true },
   { to: '/shelf', label: '我的书架' },
   { to: '/search', label: '书籍搜索' },
-  // 详情页需要具体的书籍 id，当前还没有真实书籍数据，
-  // 所以先用一个固定的占位地址，方便直接打开该页面查看结构。
-  { to: '/books/demo', label: '书籍详情' },
+  // 详情页需要具体的书籍 id，入口统一放在书籍卡片上（书架、首页都能点进去），
+  // 所以这里不再放一个指向假 id 的导航项，避免点进去看到"没有找到这本书"。
 ]
 
 export default function AppLayout({ storageError }: AppLayoutProps) {

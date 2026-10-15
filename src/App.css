@@ -171,12 +171,16 @@
 }
 
 .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   padding: var(--space-1) var(--space-3);
   border: 1px solid var(--color-border-strong);
   border-radius: 999px;
   background-color: var(--color-surface);
   color: var(--color-text-muted);
   font-size: 14px;
+  cursor: pointer;
 }
 
 .chip--current {
@@ -307,7 +311,10 @@
 }
 
 .book-item__action {
+  display: flex;
   flex-shrink: 0;
+  align-items: center;
+  gap: var(--space-2);
 }
 
 /* 列表里的按钮比页面主按钮小一号 */
@@ -462,3 +469,237 @@
   border-color: var(--color-accent);
   outline: 2px solid var(--color-accent-soft);
 }
+
+/* ================= 第三阶段：筛选、状态切换与删除 ================= */
+
+/* 筛选按钮里的数量 */
+.chip__count {
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.chip--current .chip__count {
+  color: var(--color-accent);
+}
+
+/* 书架列表里直接修改阅读状态的下拉框 */
+.status-select {
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.status-select--want-to-read {
+  border-color: #cfd6e0;
+  color: #4a5568;
+}
+
+.status-select--reading {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.status-select--finished {
+  border-color: #d9cbb6;
+  color: #7a6a52;
+}
+
+/* 危险操作按钮（移除图书） */
+.button--danger {
+  border-color: #e0bdb2;
+  background-color: var(--color-surface);
+  color: #a14a35;
+}
+
+.button--danger:hover {
+  border-color: #a14a35;
+  background-color: #fdf1ee;
+  color: #a14a35;
+}
+
+/* 空状态里的操作按钮组 */
+.panel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+/* ================= 第四阶段：阅读进度与读书笔记 ================= */
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.progress__track {
+  height: 8px;
+  border-radius: 999px;
+  background-color: #ece9e3;
+  overflow: hidden;
+}
+
+.progress__fill {
+  height: 100%;
+  border-radius: 999px;
+  background-color: var(--color-accent);
+}
+
+.progress__text,
+.progress__hint {
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+/* 卡片里的附加信息（阅读进度 / 完成时间）：窄一些，避免卡片拥挤 */
+.book-item__extra {
+  max-width: 280px;
+  margin-top: var(--space-1);
+}
+
+.book-item__extra .progress__track {
+  height: 6px;
+}
+
+.book-item__extra .progress__text,
+.book-item__extra .progress__hint {
+  font-size: 13px;
+}
+
+/* ---------- 详情页头部 ---------- */
+
+.detail-head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-5);
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+}
+
+.detail-head .cover {
+  width: 96px;
+  height: 136px;
+  font-size: 32px;
+}
+
+.detail-head__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.detail-head__title {
+  font-size: 22px;
+  overflow-wrap: anywhere;
+}
+
+.detail-head__status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.detail-head__meta {
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+/* ---------- 进度 / 笔记编辑表单 ---------- */
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+}
+
+.edit-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.field-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.field-row .field {
+  flex: 1;
+  min-width: 160px;
+}
+
+.note-textarea {
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.6;
+}
+
+/* 已保存的笔记：按纯文本展示，保留换行 */
+.note-view {
+  padding: var(--space-4);
+  border-left: 3px solid var(--color-accent-soft);
+  border-radius: var(--radius-sm);
+  background-color: #f8f7f4;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 720px) {
+  .detail-head {
+    flex-direction: column;
+  }
+
+  .book-item__extra {
+    max-width: none;
+  }
+}
+
+/* ================= 第五阶段：首页数据看板 ================= */
+
+.home-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.home-section__title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* 整行可点击时，封面 + 信息包成一个链接（放在 li 内部，不破坏列表语义） */
+.book-item__link {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: var(--space-4);
+  min-width: 0;
+  color: inherit;
+}
+
+.book-item__link:hover {
+  text-decoration: none;
+}
+
+.book-item__link:hover .book-item__title {
+  color: var(--color-accent);
+}
+
+/* 右侧「查看详情」提示 */
+.book-item__hint {
+  font-size: 14px;
+  white-space: nowrap;
+}
+
